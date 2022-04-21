@@ -1,0 +1,97 @@
+Comandos básicos do CMD no WINDOWS
+
+listar diretórios: dir (directory)
+
+navegar pelas pastas: cd / (change directory)
+
+cd .. retroceder 1 nível
+
+limpar tela CLS (clearscreen)
+
+criar diretório mkdir (make directory)
+
+del remover um arquivo
+
+remover um diretório rmdir /s /q (REMOVE DIRECTORY)
+
+flag /s  Remove todas as pastas e arquivos da pasta
+            especificada, além dela mesma. Utilizado para remover uma
+            árvore de pastas.
+flag /q   Modo silencioso. Não pede confirmação para remover a árvore de
+            pastas ao se passar o parâmetro /S.
+
+		Basicão do GIT
+
+Termos !
+master: 
+	branch principal do repositório.
+
+clone: 
+	cópia de um repositório git existente, para o seu ambiente local.
+
+commit: 
+	envio de arquivos para o repositório local.
+
+fetch ou pull:
+	pega as últimas atualizações de um repositório remoto.
+ps: A diferença entre fetch e pull é que pull combina as duas coisas: pega as atualizações de código do repositório remoto e efetua sua mesclagem com o repositório local.
+
+push:
+	nós utilizamos para enviar os nossos arquivos para um repositório remoto.
+
+remote:
+	são os locais remotos do seu repositório, normalmente em algum servidor central, como o GitHub.
+
+SHA: cada commit ou node na árvore Git é identificado por uma chave SHA única(criptografia criada pela NSA,braba). Pode-se utilizá-las em vários comandos para manipular um node específico.
+
+head :
+	É uma referência a um node para o qual nosso espaço de trabalho no repositório está referenciando.
+
+branch:
+é uma branch no Git nada mais é do que um rótulo particular em determinado node.
+
+
+
+
+		COMANDOS básicos GIT
+
+Git init : 
+	cria um subdiretório (oculto de nome .git) na pasta (pode abrir o GIT BASH direto na pasta clicando com o botão direito do mouse)
+
+Git add : 
+	adiciona uma alteração no diretório para a área de Staging
+Git commit: 
+	Manda o código para o servidor, criando uma cópia segura e válida "vá para o palco" !
+
+Ls : 
+	listas os arquivos
+git status: 
+	status do arquivo
+Ls -a : 
+	lista os arquivos ocultos
+git rm: 
+	remove o arquivo
+
+Passo a passo
+	Assim que iniciar, fazer log in - usuário:
+
+git config --global user.name "(colocar usuário)"
+git config --global user.email "(colocar email)"
+
+	Escolher a pasta que vai sincronizar
+
+Para uma conexão entre o repositório local e um remoto
+
+git remote add (nome) (url)
+
+para uma conexão entre os repositórios remotos
+
+git remote -v #lista repositórios remotos cadastrados
+
+Após conexão, realizar o upload da versão modificada para um repositório remoto já conecado com o remote.
+
+git push -u (nome) (nome do branch)
+
+para fazer o download 
+
+git pull (url)
