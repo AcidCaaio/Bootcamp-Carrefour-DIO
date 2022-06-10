@@ -1,0 +1,311 @@
+ECMASCRIPT
+erro que ocorrem em tempo de execução
+
+variavel não declarada,
+referência não definidida ou faltou ponto e virgula.
+
+DOMException
+
+DOM - Document Object Model
+
+relacionado ao código sendo rodado na web
+
+string tem valores inválidos ou o elemento não pode ser inserido.
+---------
+para trazer o comportamento de erro, devemos utilizar a tag THROW - em vez do que RETURN.
+o RETURN traz uma "frase" no caso de um erro.
+O THROW vai trazer realmente uma mensagem de erro.
+-----------------
+
+
+Try - vai fazer as verificações do código.
+
+catch - permite que capturamos o erro, manipulemos o erro de uma maneira mais organizada.
+
+Finally - instrução de chamada independente caso haja erro ou não, sempre será executado.
+
+Como criar um erro personalizado: Objeto "ErroR"
+
+anatomia: "(message, fileName, lineNumber)
+ 
+Padrão: 
+const MeuErro = New Error('Mensagem Inválida');
+extra:
+testar o erro - "throw MeuErro;"
+
+nomear o erro - "MeuErro.name = 'InvalidMessage';"
+
+Exercício prático, solução 
+
+--------------------------
+
+function validaarray(arr, num) {
+    try {
+      if(!arr && !num)
+     throw new ReferenceError("Envie os parâmetros");
+    
+     if(typeof arr !== 'object')
+     throw new TypeError("O array precisa ser do tipo object");
+    
+     if(typeof num !== 'number')
+     throw new TypeError("Array precisa ser do tipo numero");
+    
+     if(arr.length !== num)
+     throw new RangeError("Tamanho é invalido");    
+
+     return arr;
+    }
+    catch (error) {
+        if (error instanceof ReferenceError){
+            console.log("Este erro é um reference error");
+            throw(error.message);
+         }
+         else if (error instanceof TypeError){
+            console.log("Este erro é um type error");
+            throw(error.message);
+         }
+         else if (error instanceof RangeError){
+            console.log("Este erro é um Range error");
+            throw(error.message);
+    }
+    else{
+        console.log("Tipo do erro não esperado:"+ error);
+    }
+  }
+}
+console.log(validaarray([],"a"));
+
+----------------------------
+
+promises (asyncronous) - dado que quando você recebe, você não sabe o valor, porém, quando chegar a respsota você saberá o resultado.
+OS 3 ESTADOS
+1 - pending = pendente
+2 - fulfilled = completado
+3- rejected = rejeitado
+
+parâmetros " Resolve and Reject)
+
+estrutura:
+
+const myPromise = new Promise((resolve,reject) { 
+window.setTimeout((){
+resolve(console.log('resolvida!'));
+}, 2000);
+});
+
+async = 
+await = vai parar o código e depois que estiver resolvido para mostrar o resultado 
+.then = realiza depois que a promise seja bem sucedida.
+
+estrutura fetch
+fetch(url, options)
+	.then(response => response.json())
+	.then(response => console.log(json))
+o retorno dessa mensagem é uma promise e é sempre necessário que converta para um JSON para poder funcionar.
+Lembrar de usar o Await já que o retorno é um promise.
+Operações principais ( POST, GET, PUT, DELETE)
+
+resolução do exercício proposto em aula 
+
+--------------------
+const base_url = 'https://thatcopy.pw/catapi/rest/';
+const catBtn = document.getElementById('change-cat')
+const catImg = document.getElementById('cat')
+const getCats = async() =>{
+  try{
+  const data = await fetch(base_url);
+  const json = await data.json();
+  return json.webpurl;
+  }
+  catch(error){
+    console.log(error.message);
+  }
+};
+
+const loadImg = async() =>{
+  catImg.src = await getCats();
+}
+
+catBtn.addEventListener('click', loadImg);
+
+loadImg();
+
+------------
+
+programação orientada a objetos:
+
+existem duas formas de paradigmas na programação o 
+imperativo e o declarativos
+
+o imperativo foca em como você vai resolver os problemas (procedimentos).
+
+Declarativo foca em o quê você vai fazer (funcional), 
+
+Javascript orientado a objetos (OOJS)
+ 
+Nativamente, não existem classes no javascript
+quando se é feito uma classe essa é considerada uma "syntatic sugar" uma sintaxe feita para facilitar a escrita
+os pilares da orientação a objetos são:
+
+Abstração herança Encapsulamento e polimorfismo
+
+Exercício de aula
+Simulação de um banco
+
+_____________________
+
+class contaBancaria{
+  constructor(agencia, numero, tipo) {
+    this.agencia = agencia;
+    this.numero = numero;
+    this.tipo = tipo;
+    this._saldo = 0;
+  }
+
+  get saldo(){
+    return this._saldo;
+  }
+  set saldo(valor){
+    return this._saldo = valor;
+  }
+  sacar(valor){
+    if(valor > this._saldo){
+      return "Operação Negada";
+    }
+    this._saldo = (this._saldo - valor);
+    return this._saldo;
+  }
+depositar(valor){
+  this._saldo = (this._saldo + valor);
+  return this._saldo
+  } 
+}
+class contaCorrente extends contaBancaria{
+constructor(agencia, numero, saldo, CartaoCredito) {
+  super(agencia, numero, saldo);
+  this.tipo = "Corrente"
+  this.CartaoCredito = CartaoCredito
+ }
+ get CartaoCredito(){
+   return this._CartaoCredito;
+ }
+ set CartaoCredito(valor){
+  this._CartaoCredito = valor;
+ }
+}
+
+class contaPoupanca extends contaBancaria{
+  constructor(agencia, numero) {
+    super(agencia, numero);
+    this.tipo = "Poupança"
+   }
+}
+
+class contaUniversitaria extends contaBancaria{
+  constructor(agencia, numero) {
+    super(agencia, numero);
+    this.tipo = "Universitaria"
+   }
+   sacar(valor){
+     if (valor>500){
+       return "Operação negada"
+     }
+    this._saldo =  this._saldo - valor
+     
+   }
+}
+___________
+
+MAP - Filter - REDUCE
+
+metodo MAP 
+
+em paralelo com a matemática: um conjunto passa por uma operação (MAP) e se torna em outro conjunto.
+
+exemplo:
+uma matriz [1 2 3] (map 2x) = [2 4 6]
+
+essa operação map cria um novo array porém não modifica o original realizando as operações em ordem
+
+sintaxe:
+array.map(callback, thisArg)
+callback = função a ser executada em cada elemental *Obrigatório colocar
+thisArg(opcional)
+
+diferença entre map e forEach
+
+sintaxe map
+const array = [1,2,3,4,5]
+array.map((item) => item *2);
+resultado: [2,4,6,8,10]
+
+usando forEach
+const array = [1,2,3,4,5]
+array.forEach((item) => item *2);
+resultado: indefinido
+
+--------
+
+metodo filter
+
+serve para colocar todo um conjunto de dados por um filtro, criando uma nova lista apenas com os item que passaram com o filtro
+
+sintaxe
+
+array.filter(callback, thisArg)
+
+callback > normalmente será uma comparação ou uma solicitação.
+
+exemplo:
+
+const frutas = [ 'maçã fuji', 'maçã verde', 'laranja', 'abacaxi'];
+
+frutas.filter((fruta) => fruta.includes('maçã')
+
+retorno: [ 'maçã fuji', 'maçã verde']
+
+detalhe: utilize metodos que valem para strings como o metodo "includes".
+
+método reduce
+
+reduce executa uma determinada função em todos os elementos e retorna um valor único. esse valor pode ser um array, uma string, um número mas sempre será diferente do arry 
+
+sintaxe
+array.reduce(callbackfn, initialValue)
+
+callback = função a ser executada a partir do acumulador (existe um elemento acumulador dentro dessa variavel)
+initialValue = valor sobre o qual o retorno final iria atuar
+
+const callbackFn = funciont(accumulator, currentValue, index,array){
+// fazer alguma coisa
+}
+
+accumulator/prevValue - acumulador de todas as chamadas de callbackFn
+currentValue - elemento atual sendo acessado pela função 
+
+exercícios !
+
+Map
+
+Pratique a sintaxe de multiplicação de números, uma vez utilizando o parâmetro this de um objeto criado por você, e depois sem ele.
+
+Usando THis 
+const maça = {
+  value: 2,
+};
+
+const laranja = {
+  value: 3,
+};
+
+function mapComThis(arr, thisArg){
+  return arr.map(function(item){
+    return item * this.value;
+  }, thisArg);
+};
+
+const nums= [1, 2];
+
+console.log('this -> maça',mapComThis(nums,maça));
+
+console.log('this -> laranja',mapComThis(nums,laranja));

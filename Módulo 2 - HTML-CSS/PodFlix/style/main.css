@@ -1,0 +1,135 @@
+:root{
+    --vermelho: #E50914;
+    --preta: #141414;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*Elementos base*/
+body{
+    background-color: var(--preta);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+   background-image: url('https://occ-0-3310-2705.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABTQP8QrLdJvetaUTvjSQR_IXT1Gl-YC4e_60sbqcRAVQGXII98RBWw9lzkrYNlzck10N3LDvQ4VzpugfehgkbH9U3gSb.webp?r=62c');
+   background-size: cover;
+   background-repeat:no-repeat;
+}
+
+header .container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+}
+
+.container{
+    margin-left: 15px;
+}
+
+header .logo{
+    color: var(--vermelho);
+    margin-left: 5x;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    width: 150px;
+}
+
+header nav a{
+
+    text-decoration: none;
+    color: #AAA;
+    background-color: transparent;
+    margin-right: 15px;
+}
+
+header nav a:hover{
+    color:#FFF;
+}
+
+/*filme principal*/
+
+.filme-principal {
+    background-size: cover;
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.filme-principal .container{
+    width: 45%;
+}
+
+filme-principal container .titulo{
+    max-width:325px;
+    max-height:130px;
+    width: auto;
+    height: auto;
+}
+
+.filme-principal .descricao{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.titulo{
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 5%;
+}
+
+.botao{
+    background-color: rgba(0, 0, 0, .50);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition:.3s ease-out ;
+    border-radius: 10px;
+}
+
+.botao:hover{
+    background-color: white;
+    color: gray;
+}
+
+.botao i{
+    margin-right: 5px;
+}
+
+.sidenumber{
+    margin-top: 50px;
+    color: white;
+    position: absolute;
+    padding-right: 30px;
+    padding-left: 5px;
+    right: 0;
+    bottom: 35%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .50);
+    font-size: 30px;
+    text-overflow: ellipsis;
+}
+/*carousel1*/
+
+.carousel-series{
+margin-top: 100px;
+margin-left: 15px;
+
+}
+
+.box-series{
+    height: 50%;
+    width: 500%;
+    display: flex;
+}

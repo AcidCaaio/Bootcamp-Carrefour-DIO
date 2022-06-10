@@ -1,0 +1,36 @@
+@media screen and (max-width:700px){
+    header .container{
+        display:flex;
+        flex-direction: column;
+    }
+}
+
+body{
+   background-image: url('https://occ-0-3310-2705.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABTQP8QrLdJvetaUTvjSQR_IXT1Gl-YC4e_60sbqcRAVQGXII98RBWw9lzkrYNlzck10N3LDvQ4VzpugfehgkbH9U3gSb.webp?r=62c');
+   background-size: cover;
+   width: 100%;
+   background-repeat:no-repeat;
+}
+
+.button{
+    margin-top: 1px;
+    width: 190px;
+    height: 60px;
+}
+
+filme-principal .titulo{
+
+    max-width:325px;
+    max-height:130px;
+    width: auto;
+    height: auto;
+    object-fit: scale-down;
+
+}
+
+@media screen and (min-width: 1000px) {
+    .descricao{
+        width: 50%;
+    }
+    
+}
